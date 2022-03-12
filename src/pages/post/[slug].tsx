@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import Prismic from '@prismicio/client';
-import { Head } from 'next/document';
 import { RichText } from 'prismic-dom';
-import Header from '../../components/Header';
 
+import Header from '../../components/Header';
 import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
@@ -38,6 +38,10 @@ export default function Post({ post }: PostProps) {
 
   return (
     <main>
+      <Head>
+        <title>{post.data.title} | Spacetravelling</title>
+      </Head>
+
       <div className={commonStyles.wrapper}>
         <Header />
       </div>

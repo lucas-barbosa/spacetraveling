@@ -5,6 +5,7 @@ import Prismic from '@prismicio/client';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 
 import { useState } from 'react';
+import Head from 'next/head';
 import Header from '../components/Header';
 import { getPrismicClient } from '../services/prismic';
 
@@ -47,6 +48,10 @@ export default function Home({ postsPagination }: HomeProps) {
 
   return (
     <main className={commonStyles.wrapper}>
+      <Head>
+        <title>Home | Spacetravelling</title>
+      </Head>
+
       <Header />
 
       <ul className={styles.postList}>
