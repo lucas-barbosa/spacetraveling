@@ -1,1 +1,35 @@
 // TODO
+
+.postList {
+  li + li {
+    margin-top: 3rem;
+  }
+
+  margin: 4rem 0;
+}
+
+.post {
+  .title {
+    color: var(--heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    margin: .5rem 0 1.5rem;
+  }
+}
+
+.loadMore {
+  background: none;
+  border: 0;
+  color: var(--highlight);
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(0.6);
+  }
+}

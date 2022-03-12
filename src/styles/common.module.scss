@@ -1,1 +1,24 @@
-// TODO
+.wrapper {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+.detailsGroup {
+  color: var(--info);
+  font-size: 0.875rem;
+
+  .detail {
+    display: inline-flex;
+    align-items: center;
+
+    + .detail {
+      margin-left: 1.5rem;
+    }
+  }
+
+  .icon {
+    font-size: 20px;
+    margin-right: .5rem;
+  }
+}
