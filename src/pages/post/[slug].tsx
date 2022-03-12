@@ -50,7 +50,7 @@ export default function Post({ post }: PostProps) {
       return acc + splitedHeading.length + splitedBody.length;
     }, 0);
 
-    return Math.round(totalWords / 200);
+    return Math.ceil(totalWords / 200);
   }, [post.data.content]);
 
   return (
