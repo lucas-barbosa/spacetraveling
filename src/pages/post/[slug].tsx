@@ -5,6 +5,7 @@ import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
 
+import { useCallback, useMemo } from 'react';
 import Header from '../../components/Header';
 import { getPrismicClient } from '../../services/prismic';
 
@@ -35,6 +36,22 @@ interface PostProps {
 
 export default function Post({ post }: PostProps) {
   const router = useRouter();
+
+  const estimatedTimeToRead = useMemo(() => {
+    const regex = /[\s,.\n\t\r?$]/;
+
+    const totalWords = post.data.content.reduce((acc, el) => {
+      const splitedHeading = el.heading.split(regex);
+
+      const splitedBody = RichText.asText(el.body)
+        .split(regex)
+        .filter(value => !!value);
+
+      return acc + splitedHeading.length + splitedBody.length;
+    }, 0);
+
+    return Math.round(totalWords / 200);
+  }, [post.data.content]);
 
   return (
     <main>
@@ -73,7 +90,8 @@ export default function Post({ post }: PostProps) {
               </span>
 
               <span className={commonStyles.detail}>
-                <FiClock className={commonStyles.icon} />4 min
+                <FiClock className={commonStyles.icon} />
+                {estimatedTimeToRead} min
               </span>
             </div>
 
